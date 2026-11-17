@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МБОУ Гимназия № 21 — г. Батайск</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f9f9f9;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Шапка */
+        header {
+            background: #1a3c6e;
+            color: #fff;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #f0c040;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f0c040;
+        }
+
+        /* Герой-секция */
+        .hero {
+            background: linear-gradient(135deg, #1a3c6e 0%, #2a5a9e 100%);
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Секции */
+        section {
+            padding: 60px 0;
+        }
+
+        section:nth-child(even) {
+            background: #fff;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #1a3c6e;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: #f0c040;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Карточки */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: #f4f6fa;
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 5px solid #1a3c6e;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            color: #1a3c6e;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .card p {
+            color: #555;
+        }
+
+        /* Таблица */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .info-table th,
+        .info-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .info-table th {
+            background: #1a3c6e;
+            color: #fff;
+            font-weight: 600;
+            width: 40%;
+        }
+
+        .info-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .info-table tr:hover {
+            background: #f0f4ff;
+        }
+
+        /* Контакты */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .contact-item {
+            background: #f4f6fa;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .contact-item .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-item h4 {
+            color: #1a3c6e;
+            margin-bottom: 8px;
+        }
+
+        .contact-item p {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .contact-item a {
+            color: #1a3c6e;
+            font-weight: 600;
+        }
+
+        /* Подвал */
+        footer {
+            background: #1a3c6e;
+            color: #ccc;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #f0c040;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .info-table th,
+            .info-table td {
+                padding: 10px 12px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">Гимназия <span>№ 21</span> · Батайск</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">О школе</a></li>
+                    <li><a href="#history">История</a></li>
+                    <li><a href="#info">Сведения</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Герой -->
+    <section class="hero">
+        <div class="container">
+            <h1>МБОУ Гимназия № 21</h1>
+            <p>Муниципальное бюджетное общеобразовательное учреждение города Батайска Ростовской области. Обучение детей с 1 по 11 класс.</p>
+        </div>
+    </section>
+
+    <!-- О школе -->
+    <section id="about">
+        <div class="container">
+            <h2>О школе</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>🎓 Обучение</h3>
+                    <p>Гимназия осуществляет обучение детей с 1-го по 11 класс. Всего обучается около 1200 человек: начальная школа — 519, средняя — 586, старшая — 95 учеников.</p>
+                </div>
+                <div class="card">
+                    <h3>👩‍🏫 Педагоги</h3>
+                    <p>В гимназии работают 70 педагогических работников, из них 58 учителей. Коллектив включает кандидатов педагогических наук и учителей высшей категории.</p>
+                </div>
+                <div class="card">
+                    <h3>🏫 Режим работы</h3>
+                    <p>Гимназия работает в две смены. Первый урок первой смены начинается в 8:00. Учебный процесс организован в соответствии с федеральными стандартами.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- История -->
+    <section id="history">
+        <div class="container">
+            <h2>История гимназии</h2>
+            <div style="background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); max-width: 800px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 1.1rem; color: #444;">
+                    Школа образована в <strong>1937 году</strong>. Тогда она носила название <strong>«Школа № 7»</strong> и была семилетней. 
+                    История микрорайона и школы-гимназии № 21 бережно сохраняется в материалах школьного музея <strong>«Свет памяти»</strong> 
+                    и транслируется всем участникам образовательного процесса.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сведения об образовательной организации -->
+    <section id="info">
+        <div class="container">
+            <h2>Сведения об организации</h2>
+            <table class="info-table">
+                <tr>
+                    <th>Полное наименование</th>
+                    <td>Муниципальное бюджетное общеобразовательное учреждение Гимназия № 21 г. Батайска</td>
+                </tr>
+                <tr>
+                    <th>Директор</th>
+                    <td>Круглова Мария Владимировна</td>
+                </tr>
+                <tr>
+                    <th>Учредитель</th>
+                    <td>Управление образования города Батайска (пл. Ленина, 3)</td>
+                </tr>
+                <tr>
+                    <th>Юридический адрес</th>
+                    <td>346881, Ростовская область, г. Батайск, Авиагородок, д. 34-а</td>
+                </tr>
+                <tr>
+                    <th>Телефоны</th>
+                    <td>8 (86354) 5-52-86, 5-41-97</td>
+                </tr>
+                <tr>
+                    <th>E-mail</th>
+                    <td><a href="mailto:gimnazija21@mail.ru">gimnazija21@mail.ru</a></td>
+                </tr>
+                <tr>
+                    <th>Официальный сайт</th>
+                    <td><a href="https://bataysk-gimnaziya21.ru" target="_blank" rel="noopener">bataysk-gimnaziya21.ru</a></td>
+                </tr>
+                <tr>
+                    <th>Лицензия</th>
+                    <td>Серия 61Л01 № 0002837, рег. № 5075 от 18.06.2015 г.</td>
+                </tr>
+                <tr>
+                    <th>Аккредитация</th>
+                    <td>Серия 61А01 № 0000304, рег. № 2240 от 17.06.2013 г.</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contacts">
+        <div class="container">
+            <h2>Контакты</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="icon">📍</div>
+                    <h4>Адрес</h4>
+                    <p>346881, Ростовская область,<br>г. Батайск, Авиагородок, д. 34-а</p>
+                </div>
+                <div class="contact-item">
+                    <div class="icon">📞</div>
+                    <h4>Телефоны</h4>
+                    <p><a href="tel:+78635455286">8 (86354) 5-52-86</a><br><a href="tel:+78635454197">8 (86354) 5-41-97</a></p>
+                </div>
+                <div class="contact-item">
+                    <div class="icon">✉️</div>
+                    <h4>E-mail</h4>
+                    <p><a href="mailto:gimnazija21@mail.ru">gimnazija21@mail.ru</a></p>
+                </div>
+                <div class="contact-item">
+                    <div class="icon">🌐</div>
+                    <h4>Сайт</h4>
+                    <p><a href="https://bataysk-gimnaziya21.ru" target="_blank" rel="noopener">bataysk-gimnaziya21.ru</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <p>© 2026 МБОУ Гимназия № 21 г. Батайска. Все права защищены.</p>
+            <p style="margin-top: 8px; font-size: 0.85rem;">
+                Информация взята с официального сайта <a href="https://bataysk-gimnaziya21.ru" target="_blank" rel="noopener">bataysk-gimnaziya21.ru</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Плавная прокрутка -->
+    <script>
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
